@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>Неоновая Змейка</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <canvas id="gameCanvas" aria-label="Игровое поле Змейка"></canvas>
+
+    <div id="hud">
+      <div id="hudLeft">
+        <div id="score" class="hudValue">СЧЕТ: 000</div>
+        <div id="best" class="hudValue small">ЛУЧШИЙ РЕЗУЛЬТАТ: 000</div>
+      </div>
+      <div id="hudRight">
+        <div id="comboPill" class="hudPill hidden"></div>
+        <div id="boosterPill" class="hudPill hidden"></div>
+      </div>
+    </div>
+
+    <button id="exitBtn" class="exitBtn hidden" type="button">ВЫХОД (ESC)</button>
+
+    <div id="evoFlash" class="evoFlash hidden" role="status" aria-live="polite">
+      <div class="evoTitle">ЭВОЛЮЦИЯ: УРОВЕНЬ ПОВЫШЕН</div>
+      <div id="evoLevelText" class="evoLevel"></div>
+    </div>
+
+    <div id="menu" class="overlay">
+      <div class="panel">
+        <div class="panelHeader">
+          <div class="logo">НЕОНОВАЯ ЗМЕЙКА</div>
+          <div class="subtitle">Управление: WASD / стрелки / свайп по экрану</div>
+        </div>
+
+        <div class="menuGrid">
+          <div class="skinGrid" id="skinGrid" aria-label="Выбор скина"></div>
+
+          <div class="previewBox">
+            <div class="previewTitle">ПРЕВЬЮ СКИНА</div>
+            <canvas id="skinPreview" width="220" height="220"></canvas>
+            <div id="skinInfo" class="skinInfo"></div>
+
+            <div class="rowButtons">
+              <button id="startBtn" class="btn primary" type="button">СТАРТ</button>
+            </div>
+
+            <div class="toggleRow">
+              <label class="toggle">
+                <input id="soundToggle" type="checkbox" checked />
+                <span>Звук</span>
+              </label>
+            </div>
+
+            <div class="hint">
+              Геймплейные бонусы:
+              <br />
+              Очки растут за еду. По мере набора очков ваша «змейка» эволюционирует и получает бонусы:
+              <br />
+              Уровень 2: +10% скорости
+              <br />
+              Уровень 3: увеличенный радиус подбора еды
+              <br />
+              Уровень 4: шанс игнорировать столкновения
+              <br />
+              Уровень 5: притягивание еды
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="gameOver" class="overlay hidden">
+      <div class="panel gameOverPanel">
+        <div class="logo">ИГРА ОКОНЧЕНА</div>
+        <div class="statRow">
+          <div class="statBlock">
+            <div class="statLabel">СЧЕТ</div>
+            <div id="finalScore" class="statValue">0</div>
+          </div>
+          <div class="statBlock">
+            <div class="statLabel">ЛУЧШИЙ РЕЗУЛЬТАТ</div>
+            <div id="finalBest" class="statValue">0</div>
+          </div>
+        </div>
+        <div class="restartRow">
+          <button id="restartBtn" class="btn primary" type="button">ПЕРЕЗАПУСК</button>
+          <button id="backToMenuBtn" class="btn ghost" type="button">СКИНЫ</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="vignette" aria-hidden="true"></div>
+    <script src="game.js" defer></script>
+  </body>
+</html>
+
